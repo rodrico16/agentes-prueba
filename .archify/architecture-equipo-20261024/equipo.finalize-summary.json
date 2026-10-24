@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/candidate.json",
+    "sha256": "048488fbd7faf1d79f8d4bd2b15e18a5cec8b7238e59812b63c50f6dd4641e99",
+    "bytes": 4329
+  },
+  "artifact": {
+    "path": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.html"
+  },
+  "gates": {
+    "validate": "not-run",
+    "deliver": "fail",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "deliver",
+  "diagnostics": [
+    {
+      "code": "finalize/stage-failure",
+      "severity": "error",
+      "message": "The deliver stage did not complete successfully.",
+      "subject": {
+        "stage": "deliver"
+      },
+      "evidence": {
+        "exitCode": 1,
+        "reason": "Command failed: /usr/local/bin/node /tmp/equipo-producto-ia-agents/skills/archify/bin/archify.mjs deliver architecture /tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/candidate.json /tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.html --quality showcase --json\n"
+      },
+      "supportedFixes": [
+        "use the compact finalize summary to repair the named subject in place, then rerun finalize once"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.finalize.json",
+    "summaryReceipt": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1352,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  }
+}

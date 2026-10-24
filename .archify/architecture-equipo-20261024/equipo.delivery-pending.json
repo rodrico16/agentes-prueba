@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "command": "deliver",
+  "status": "pending",
+  "receiptId": "1edeaf2c-bd4b-46f5-a98e-6e8a537a7a7d",
+  "input": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/candidate.json",
+  "output": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.html"
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-24T02:46:06.484Z",
+  "specification": {
+    "path": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/candidate.json",
+    "sha256": "048488fbd7faf1d79f8d4bd2b15e18a5cec8b7238e59812b63c50f6dd4641e99",
+    "bytes": 4329
+  },
+  "artifact": {
+    "path": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.html"
+  },
+  "stages": {
+    "validate": {
+      "status": "not-run",
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 1313,
+      "command": [
+        "/usr/local/bin/node",
+        "/tmp/equipo-producto-ia-agents/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/candidate.json",
+        "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ]
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "finalize/stage-failure",
+      "severity": "error",
+      "message": "The deliver stage did not complete successfully.",
+      "subject": {
+        "stage": "deliver"
+      },
+      "evidence": {
+        "exitCode": 1,
+        "reason": "Command failed: /usr/local/bin/node /tmp/equipo-producto-ia-agents/skills/archify/bin/archify.mjs deliver architecture /tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/candidate.json /tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.html --quality showcase --json\n"
+      },
+      "supportedFixes": [
+        "use the compact finalize summary to repair the named subject in place, then rerun finalize once"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.finalize.json",
+    "summaryReceipt": "/tmp/control-room-work/run-mjdA70/agentes-prueba/.archify/architecture-equipo-20261024/equipo.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "deliver",
+  "finishedAt": "2026-10-24T02:46:07.837Z",
+  "durationMs": 1352,
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "check-failed"
+  }
+}
