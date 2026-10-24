@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Propuesta: equipo coordinado con estado recuperable",
+    "locale": "es",
+    "output": ".archify/architecture-equipo-20261024/equipo.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "Responsabilidad de ejecución"
+        },
+        "database": {
+          "label": "Persistencia propuesta"
+        },
+        "external": {
+          "label": "Actor / canal"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "usuario",
+      "type": "external",
+      "label": "Usuario",
+      "sublabel": "Objetivo y autorización",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        170,
+        66
+      ]
+    },
+    {
+      "id": "control",
+      "type": "external",
+      "label": "Control Room",
+      "sublabel": "Entrada y reanudación explícita",
+      "pos": [
+        370,
+        40
+      ],
+      "size": [
+        220,
+        66
+      ]
+    },
+    {
+      "id": "supervisor",
+      "type": "backend",
+      "label": "Supervisor único",
+      "sublabel": "Prioriza, delega e integra",
+      "tag": "Máximo 300 s por petición",
+      "pos": [
+        370,
+        240
+      ],
+      "size": [
+        220,
+        76
+      ]
+    },
+    {
+      "id": "estado",
+      "type": "database",
+      "label": "Estado y artefactos",
+      "sublabel": "Durabilidad por seleccionar",
+      "tag": "Checkpoint recuperable",
+      "pos": [
+        40,
+        240
+      ],
+      "size": [
+        210,
+        76
+      ]
+    },
+    {
+      "id": "especialista-a",
+      "type": "backend",
+      "label": "Especialista A",
+      "sublabel": "Tarea y archivos acotados",
+      "tag": "Efímero",
+      "pos": [
+        40,
+        450
+      ],
+      "size": [
+        210,
+        66
+      ]
+    },
+    {
+      "id": "especialista-b",
+      "type": "backend",
+      "label": "Especialista B",
+      "sublabel": "Tarea independiente",
+      "tag": "Efímero",
+      "pos": [
+        370,
+        450
+      ],
+      "size": [
+        220,
+        66
+      ]
+    },
+    {
+      "id": "entrega",
+      "type": "backend",
+      "label": "Verificación y entrega",
+      "sublabel": "Etapa del mismo supervisor",
+      "tag": "Evidencia y pendientes",
+      "pos": [
+        730,
+        240
+      ],
+      "size": [
+        240,
+        76
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "objetivo",
+      "from": "usuario",
+      "to": "control",
+      "label": "Solicitud",
+      "variant": "emphasis"
+    },
+    {
+      "id": "iniciar",
+      "from": "control",
+      "to": "supervisor",
+      "label": "Iniciar / reanudar",
+      "variant": "emphasis"
+    },
+    {
+      "id": "persistir",
+      "from": "supervisor",
+      "to": "estado",
+      "label": "Guardar / leer"
+    },
+    {
+      "id": "delegar-a",
+      "from": "supervisor",
+      "to": "especialista-a",
+      "label": "Encargo / resultado"
+    },
+    {
+      "id": "delegar-b",
+      "from": "supervisor",
+      "to": "especialista-b",
+      "label": "Encargo / resultado"
+    },
+    {
+      "id": "verificar",
+      "from": "supervisor",
+      "to": "entrega",
+      "label": "Integrar y verificar",
+      "variant": "emphasis"
+    },
+    {
+      "id": "devolver",
+      "from": "entrega",
+      "to": "control",
+      "label": "Resultado",
+      "fromSide": "top",
+      "toSide": "right"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Diseño propuesto; no implementado",
+      "items": [
+        "El repositorio contiene instrucciones del equipo, no este servicio en ejecución.",
+        "Persistencia durable y contratos requieren implementación y pruebas."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Ejecución acotada",
+      "items": [
+        "Máximo dos especialistas simultáneos y un único supervisor.",
+        "Control Room devuelve el resultado al usuario; publicar requiere autorización vigente."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Pausa y recuperación",
+      "items": [
+        "Guardar estado y artefactos antes de agotar 300 s; no continuar en memoria tras timeout.",
+        "Ante corte abrupto, recuperar el último checkpoint confirmado mediante reanudación explícita."
+      ]
+    }
+  ]
+}
